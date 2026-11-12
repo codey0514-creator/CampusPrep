@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IIT Bhilai Placement Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-body">
+    <div class="login-container">
+        <h1>Placement Prep Portal</h1>
+        <p>Login strictly restricted to @iitbhilai.ac.in</p>
+        <a href="/auth/google" class="btn google-btn">Sign in with Google</a>
+        <p id="error-msg" style="color: red;"></p>
+    </div>
+    <script>
+        if(window.location.search.includes('error=denied')) {
+            document.getElementById('error-msg').innerText = "Access Denied. Ensure you are using your @iitbhilai.ac.in email.";
+        }
+    </script>
+</body>
+</html>
