@@ -1,0 +1,83 @@
+
+[
+  {
+    "id": 1,
+    "company": "Google",
+    "type": "oa",
+    "year": 2026,
+    "branch": "CSE",
+    "questions": [
+      "Two Sum",
+      "Longest Substring Without Repeating Characters",
+      "Basic graph traversal questions"
+    ],
+    "experience": "The online assessment consisted of coding questions based on arrays, strings and graphs. Time management was important.",
+    "tips": "Practice LeetCode medium problems and revise common data structures.",
+    "createdAt": "2026-11-13T15:30:00.000Z",
+    "status": "approved"
+  },
+  {
+    "id": 2,
+    "company": "Microsoft",
+    "type": "interview",
+    "year": 2026,
+    "branch": "CSE",
+    "questions": [
+      "Explain the working of a HashMap.",
+      "Reverse a linked list.",
+      "Discuss time and space complexity."
+    ],
+    "experience": "The interview focused on problem-solving, data structures and explaining the approach before writing code.",
+    "tips": "Focus on explaining your thought process clearly. Revise linked lists, trees and hashing.",
+    "createdAt": "2026-11-12T12:00:00.000Z",
+    "status": "approved"
+  },
+  {
+    "id": 3,
+    "company": "Amazon",
+    "type": "oa",
+    "year": 2026,
+    "branch": "CSE",
+    "questions": [
+      "Maximum subarray sum",
+      "Merge overlapping intervals",
+      "Find the kth largest element"
+    ],
+    "experience": "The assessment included multiple coding problems with a strict time limit. Most questions required knowledge of arrays and sorting.",
+    "tips": "Practice solving problems within time limits and understand different sorting techniques.",
+    "createdAt": "2026-11-10T09:00:00.000Z",
+    "status": "approved"
+  },
+  {
+    "id": 4,
+    "company": "Flipkart",
+    "type": "interview",
+    "year": 2025,
+    "branch": "ECE",
+    "questions": [
+      "Implement binary search.",
+      "Explain process scheduling.",
+      "What is the difference between a stack and a queue?"
+    ],
+    "experience": "The discussion covered DSA fundamentals, operating systems and basic computer science concepts.",
+    "tips": "Do not ignore core CS subjects. Practice writing clean code and explaining complexity.",
+    "createdAt": "2026-11-08T14:00:00.000Z",
+    "status": "approved"
+  },
+  {
+    "id": 5,
+    "company": "Adobe",
+    "type": "oa",
+    "year": 2025,
+    "branch": "CSE",
+    "questions": [
+      "Longest increasing subsequence",
+      "Coin change problem",
+      "Basic dynamic programming questions"
+    ],
+    "experience": "The assessment focused on problem-solving and dynamic programming. Understanding the state transition was particularly important.",
+    "tips": "Practice standard DP patterns and learn to identify overlapping subproblems.",
+    "createdAt": "2026-11-05T10:00:00.000Z",
+    "status": "approved"
+  }
+]

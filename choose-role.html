@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusPrep - Choose Role</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .role-container {
+            max-width: 750px;
+            margin: 80px auto;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .role-options {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 35px;
+            flex-wrap: wrap;
+        }
+
+        .role-card {
+            flex: 1;
+            min-width: 220px;
+            padding: 30px 20px;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            background: #161b22;
+        }
+
+        .role-card h3 {
+            margin-bottom: 12px;
+        }
+
+        .role-card p {
+            color: #8b949e;
+            margin-bottom: 22px;
+        }
+
+        .role-card button {
+            width: 100%;
+            padding: 12px;
+            cursor: pointer;
+            border: none;
+            border-radius: 6px;
+            background: #238636;
+            color: white;
+            font-size: 15px;
+        }
+
+        .role-card button:hover {
+            background: #2ea043;
+        }
+
+        .logout-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #8b949e;
+        }
+
+        #user-info {
+            color: #8b949e;
+            margin-top: 10px;
+        }
+
+        #error-message {
+            color: #f85149;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <main class="role-container">
+        <h1>Welcome to CampusPrep</h1>
+        <p id="user-info">Loading your account...</p>
+
+        <h2>What would you like to do?</h2>
+
+        <div class="role-options">
+            <div class="role-card">
+                <h3>Explore Experiences</h3>
+                <p>Read placement experiences and prepare for interviews and online assessments.</p>
+                <button onclick="selectRole('viewer')">
+                    Explore Experiences
+                </button>
+            </div>
+
+            <div class="role-card">
+                <h3>Contribute</h3>
+                <p>Share your placement journey and help other students prepare.</p>
+                <button onclick="selectRole('contributor')">
+                    Contribute
+                </button>
+            </div>
+
+            <div class="role-card" id="admin-card" hidden>
+                <h3>Admin Dashboard</h3>
+                <p>Review submitted experiences and manage contributions.</p>
+                <button onclick="selectRole('admin')">
+                    Admin Dashboard
+                </button>
+            </div>
+        </div>
+
+        <p id="error-message"></p>
+
+        <a href="/auth/logout" class="logout-link">Logout</a>
+    </main>
+
+    <script>
+        async function loadUser() {
+            try {
+                const response = await fetch("/api/me");
+
+                if (!response.ok) {
+                    window.location.href = "/";
+                    return;
+                }
+
+                const user = await response.json();
+
+                document.getElementById("user-info").textContent =
+                    `Logged in as ${user.name} (${user.email})`;
+
+                if (user.isAdmin) {
+                    document.getElementById("admin-card").hidden = false;
+                }
+            } catch (error) {
+                document.getElementById("error-message").textContent =
+                    "Unable to load account information.";
+            }
+        }
+
+        async function selectRole(role) {
+            const errorMessage = document.getElementById("error-message");
+            errorMessage.textContent = "";
+
+            try {
+                const response = await fetch("/select-role", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ role: role })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    errorMessage.textContent =
+                        data.message || "Unable to select this role.";
+                    return;
+                }
+
+                window.location.href = data.redirect;
+            } catch (error) {
+                errorMessage.textContent =
+                    "Something went wrong. Please try again.";
+            }
+        }
+
+        loadUser();
+    </script>
+</body>
+</html>

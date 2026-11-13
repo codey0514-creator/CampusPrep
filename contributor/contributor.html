@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusPrep - Contribute</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="contributor.css">
+</head>
+<body>
+    <header class="topbar">
+        <h1>CampusPrep</h1>
+        <div class="header-actions">
+            <a href="/veiwer.html">Explore Experiences</a>
+            <a href="/auth/logout">Logout</a>
+        </div>
+    </header>
+
+    <main class="contributor-container">
+        <section class="intro">
+            <h2>Share Your Placement Experience</h2>
+            <p>Your experience can help another student prepare better. Share what you learned during your placement process.</p>
+        </section>
+
+        <form id="contribution-form">
+            <div class="form-group">
+                <label for="company">Company Name</label>
+                <input type="text" id="company" placeholder="e.g. Google" required maxlength="100">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="type">Experience Type</label>
+                    <select id="type" required>
+                        <option value="">Select type</option>
+                        <option value="oa">Online Assessment (OA)</option>
+                        <option value="interview">Interview</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="year">Placement Year</label>
+                    <input type="number" id="year" min="2000" max="2100" placeholder="e.g. 2026" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="branch">Branch</label>
+                <input type="text" id="branch" placeholder="e.g. Computer Science and Engineering" required maxlength="100">
+            </div>
+
+            <div class="form-group">
+                <label for="questions">Questions Asked</label>
+                <textarea id="questions" rows="5" placeholder="Write the questions or topics you encountered..." required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="experience">Your Experience</label>
+                <textarea id="experience" rows="7" placeholder="Describe the process, rounds, difficulty and your experience..." required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="tips">Preparation Tips</label>
+                <textarea id="tips" rows="4" placeholder="Share useful preparation advice..."></textarea>
+            </div>
+
+            <label class="anonymous-option">
+                <input type="checkbox" id="anonymous">
+                Submit anonymously
+            </label>
+
+            <p class="review-note">
+                Your submission will be reviewed by an admin before it becomes visible to other students.
+            </p>
+
+            <button type="submit" id="submit-button">Submit for Review</button>
+
+            <p id="form-message" role="status"></p>
+        </form>
+    </main>
+
+    <script src="contributor.js"></script>
+</body>
+</html>

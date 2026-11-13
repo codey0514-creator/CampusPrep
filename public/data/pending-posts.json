@@ -1,0 +1,31 @@
+[
+    {
+        "id": "unique-post-id",
+        "company": "Google",
+        "type": "oa",
+        "year": 2026,
+        "branch": "Computer Science and Engineering",
+        "questions": "Describe the questions asked.",
+        "experience": "Describe the placement experience.",
+        "tips": "Share preparation tips.",
+        "isAnonymous": false,
+        "authorName": "Student Name",
+        "status": "approved",
+        "createdAt": "2026-11-14T00:00:00.000Z"
+    },
+    {
+        "id": "41154e41-4f64-4603-a47d-f6cb46f631f1",
+        "company": "google",
+        "type": "oa",
+        "year": 2016,
+        "branch": "cse",
+        "questions": "dp , graph , greedy",
+        "experience": "falana jhumka",
+        "tips": "nhi btaunga",
+        "isAnonymous": true,
+        "authorName": "Anonymous",
+        "authorEmail": "nishchaljain@iitbhilai.ac.in",
+        "status": "pending",
+        "createdAt": "2026-11-13T19:10:28.990Z"
+    }
+]

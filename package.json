@@ -1,0 +1,29 @@
+{
+  "name": "campusprep",
+  "version": "1.0.0",
+  "description": "CampusPrep is a placement experience sharing platform for students of IIT Bhilai. Students can read interview and online assessment (OA) experiences shared by their peers, search by company, and submit their own. Every submission is reviewed by an admin before it goes live.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codey0514-creator/CampusPrep.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/codey0514-creator/CampusPrep/issues"
+  },
+  "homepage": "https://github.com/codey0514-creator/CampusPrep#readme",
+  "dependencies": {
+    "dotenv": "^18.0.10",
+    "express": "^5.3.0",
+    "express-session": "^1.19.0",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0"
+  }
+}
