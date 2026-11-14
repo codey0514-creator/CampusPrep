@@ -1,4 +1,3 @@
-
 require("dotenv").config();
 
 const express = require("express");
@@ -384,8 +383,7 @@ app.get("/admin.html", (req, res, next) => {
     ) {
         return res.redirect("/choose-role.html");
     }
-
-    next();
+    res.sendFile(path.join(__dirname, "admin", "admin.html"));
 });
 
 // Prevent public access to private pending submissions

@@ -191,3 +191,88 @@ main p {
     margin-top: 16px;
     margin-bottom: 0;
 }
+
+/* Admin dashboard */
+
+.admin-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.admin-toolbar h3 {
+    color: #e6edf3;
+}
+
+#refreshPending,
+.approve-button,
+.reject-button {
+    padding: 8px 16px;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#refreshPending {
+    background-color: #21262d;
+    color: #e6edf3;
+}
+
+.approve-button {
+    background-color: #238636;
+    border-color: #238636;
+    color: white;
+}
+
+.reject-button {
+    background-color: #da3633;
+    border-color: #da3633;
+    color: white;
+}
+
+.approve-button:disabled,
+.reject-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.admin-author,
+.admin-date {
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+.admin-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.admin-success {
+    color: #3fb950;
+    margin: 12px 0;
+}
+
+.admin-error {
+    color: #f85149;
+    margin: 12px 0;
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 16px;
+    }
+
+    nav a {
+        margin-left: 10px;
+    }
+
+    .admin-toolbar {
+        align-items: flex-start;
+        gap: 12px;
+        flex-direction: column;
+    }
+}
