@@ -330,7 +330,6 @@ app.post("/api/admin/reject/:id", requireAdmin, (req, res) => {
             message: "Pending submission not found."
         });
     }
-
     post.status = "rejected";
     post.rejectedAt = new Date().toISOString();
     post.rejectedBy = req.user.email;

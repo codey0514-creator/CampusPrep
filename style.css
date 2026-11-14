@@ -205,7 +205,6 @@ main p {
 .admin-toolbar h3 {
     color: #e6edf3;
 }
-
 #refreshPending,
 .approve-button,
 .reject-button {
@@ -215,7 +214,6 @@ main p {
     cursor: pointer;
     font-size: 14px;
 }
-
 #refreshPending {
     background-color: #21262d;
     color: #e6edf3;

@@ -10,7 +10,6 @@ const pendingPostsEl = document.getElementById("pending-posts");
 const pendingCountEl = document.getElementById("pending-count");
 const adminMessageEl = document.getElementById("admin-message");
 const refreshButton = document.getElementById("refreshPending");
-
 const TYPE_LABELS = {
     oa: "OA",
     interview: "Interview"
