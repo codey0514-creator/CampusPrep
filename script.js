@@ -10,6 +10,7 @@ const pendingPostsEl = document.getElementById("pending-posts");
 const pendingCountEl = document.getElementById("pending-count");
 const adminMessageEl = document.getElementById("admin-message");
 const refreshButton = document.getElementById("refreshPending");
+
 const TYPE_LABELS = {
     oa: "OA",
     interview: "Interview"
@@ -61,11 +62,16 @@ function getVisiblePosts() {
         .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 }
 
+
 function buildViewerCard(p) {
     const meta = [p.year, p.branch]
         .filter(Boolean)
         .map(escapeHtml)
         .join(" • ");
+
+    const author = !p.isAnonymous && p.authorName && p.authorName.trim()
+        ? `<span class="contributor-name">${escapeHtml(p.authorName)}</span>`
+        : "";
 
     const questions = getQuestions(p.questions);
 
@@ -92,17 +98,23 @@ function buildViewerCard(p) {
 
     return `
         <div class="experience-card">
-            <h3>${escapeHtml(p.company)}</h3>
+            <div class="card-heading">
+                <h3>${escapeHtml(p.company)}</h3>
+                ${author}
+            </div>
+
             <div class="card-meta">
                 <span class="type">${TYPE_LABELS[p.type] || escapeHtml(p.type)}</span>
                 <span class="year-branch">${meta}</span>
             </div>
+
             ${questionsSection}
             ${experience}
             ${tips}
         </div>
     `;
 }
+
 
 function renderViewer() {
     const posts = getVisiblePosts();

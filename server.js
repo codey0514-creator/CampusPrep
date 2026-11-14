@@ -36,7 +36,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Ensure data files exist
 if (!fs.existsSync(DATA_DIR)) {
     fs.mkdirSync(DATA_DIR, { recursive: true });
 }
@@ -49,7 +48,6 @@ if (!fs.existsSync(PENDING_FILE)) {
     fs.writeFileSync(PENDING_FILE, "[]");
 }
 
-// Read and write JSON files
 function readJSON(file) {
     return JSON.parse(fs.readFileSync(file, "utf8"));
 }
@@ -58,7 +56,6 @@ function writeJSON(file, data) {
     fs.writeFileSync(file, JSON.stringify(data, null, 4));
 }
 
-// Authentication middleware
 function requireLogin(req, res, next) {
     if (!req.isAuthenticated()) {
         return res.status(401).json({
@@ -96,7 +93,6 @@ function requireAdmin(req, res, next) {
     next();
 }
 
-// Google authentication
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -132,14 +128,12 @@ passport.deserializeUser((user, done) => {
     done(null, user);
 });
 
-// Google login
 app.get("/auth/google",
     passport.authenticate("google", {
         scope: ["profile", "email"]
     })
 );
 
-// Google callback
 app.get("/auth/google/callback",
     passport.authenticate("google", {
         failureRedirect: "/?error=denied"
@@ -154,7 +148,6 @@ app.get("/auth/google/callback",
     }
 );
 
-// Get logged-in user
 app.get("/api/me", requireLogin, (req, res) => {
     res.json({
         name: req.user.name,
@@ -163,7 +156,6 @@ app.get("/api/me", requireLogin, (req, res) => {
     });
 });
 
-// Select role
 app.post("/select-role", requireLogin, (req, res, next) => {
     const role = req.body.role;
 
@@ -196,9 +188,9 @@ app.post("/select-role", requireLogin, (req, res, next) => {
     });
 });
 
-// Submit a new experience
 app.post("/api/posts", requireContributor, (req, res) => {
     const {
+        authorName,
         company,
         type,
         year,
@@ -210,25 +202,19 @@ app.post("/api/posts", requireContributor, (req, res) => {
     } = req.body;
 
     if (
-        typeof company !== "string" ||
-        !company.trim() ||
-        !["oa", "interview"].includes(type) ||
-        !Number.isInteger(year) ||
-        year < 2000 ||
-        year > 2100 ||
-        typeof branch !== "string" ||
-        !branch.trim() ||
-        typeof questions !== "string" ||
-        !questions.trim() ||
-        typeof experience !== "string" ||
-        !experience.trim() ||
-        (tips !== undefined && typeof tips !== "string") ||
-        (isAnonymous !== undefined && typeof isAnonymous !== "boolean")
-    ) {
-        return res.status(400).json({
-            message: "Please provide valid information in all required fields."
-        });
-    }
+    !company ||
+    !type ||
+    !year ||
+    !branch ||
+    !questions ||
+    !experience ||
+    typeof isAnonymous !== "boolean" ||
+    (!isAnonymous && (!authorName || !authorName.trim()))
+) {
+    return res.status(400).json({
+        message: "Please provide valid information in all required fields."
+    });
+}
 
     const pendingPosts = readJSON(PENDING_FILE);
 
@@ -242,7 +228,7 @@ app.post("/api/posts", requireContributor, (req, res) => {
         experience: experience.trim(),
         tips: (tips || "").trim(),
         isAnonymous: isAnonymous === true,
-        authorName: isAnonymous ? "Anonymous" : req.user.name,
+        authorName: isAnonymous ? "" : authorName.trim(),
         authorEmail: req.user.email,
         status: "pending",
         createdAt: new Date().toISOString()
@@ -268,7 +254,6 @@ app.post("/api/posts", requireContributor, (req, res) => {
     });
 });
 
-// Get all pending submissions (admin only)
 app.get("/api/admin/pending-posts", requireAdmin, (req, res) => {
     const pendingPosts = readJSON(PENDING_FILE);
 
@@ -277,7 +262,6 @@ app.get("/api/admin/pending-posts", requireAdmin, (req, res) => {
     res.json(posts);
 });
 
-// Approve a submission
 app.post("/api/admin/approve/:id", requireAdmin, (req, res) => {
     const pendingPosts = readJSON(PENDING_FILE);
     const approvedPosts = readJSON(POSTS_FILE);
@@ -301,10 +285,8 @@ app.post("/api/admin/approve/:id", requireAdmin, (req, res) => {
 
     approvedPosts.push(approvedPost);
 
-    // Add to the public approved posts file
     writeJSON(POSTS_FILE, approvedPosts);
 
-    // Mark the original submission as approved
     post.status = "approved";
     post.approvedAt = approvedPost.approvedAt;
     post.approvedBy = req.user.email;
@@ -317,7 +299,6 @@ app.post("/api/admin/approve/:id", requireAdmin, (req, res) => {
     });
 });
 
-// Reject a submission
 app.post("/api/admin/reject/:id", requireAdmin, (req, res) => {
     const pendingPosts = readJSON(PENDING_FILE);
 
@@ -330,6 +311,7 @@ app.post("/api/admin/reject/:id", requireAdmin, (req, res) => {
             message: "Pending submission not found."
         });
     }
+
     post.status = "rejected";
     post.rejectedAt = new Date().toISOString();
     post.rejectedBy = req.user.email;
@@ -342,14 +324,12 @@ app.post("/api/admin/reject/:id", requireAdmin, (req, res) => {
     });
 });
 
-// Get approved experiences
 app.get("/api/posts/approved", (req, res) => {
     const posts = readJSON(POSTS_FILE);
 
     res.json(posts.filter(post => !post.status || post.status === "approved"));
 });
 
-// Protect viewer page
 app.get("/veiwer.html", (req, res, next) => {
     if (
         !req.isAuthenticated() ||
@@ -361,7 +341,6 @@ app.get("/veiwer.html", (req, res, next) => {
     next();
 });
 
-// Protect contributor page
 app.get("/contributor/contributor.html", (req, res, next) => {
     if (
         !req.isAuthenticated() ||
@@ -373,7 +352,6 @@ app.get("/contributor/contributor.html", (req, res, next) => {
     next();
 });
 
-// Protect admin page
 app.get("/admin.html", (req, res, next) => {
     if (
         !req.isAuthenticated() ||
@@ -385,12 +363,10 @@ app.get("/admin.html", (req, res, next) => {
     res.sendFile(path.join(__dirname, "admin", "admin.html"));
 });
 
-// Prevent public access to private pending submissions
 app.use("/public/data/pending-posts.json", (req, res) => {
     res.status(404).send("Not found");
 });
 
-// Logout
 app.get("/auth/logout", (req, res, next) => {
     req.logout(err => {
         if (err) return next(err);
@@ -401,7 +377,6 @@ app.get("/auth/logout", (req, res, next) => {
     });
 });
 
-// Serve frontend files
 app.use(express.static(__dirname, {
     dotfiles: "deny"
 }));
