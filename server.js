@@ -1,4 +1,3 @@
-
 require("dotenv").config();
 
 const express = require("express");
@@ -331,7 +330,6 @@ app.post("/api/admin/reject/:id", requireAdmin, (req, res) => {
             message: "Pending submission not found."
         });
     }
-
     post.status = "rejected";
     post.rejectedAt = new Date().toISOString();
     post.rejectedBy = req.user.email;
@@ -384,8 +382,7 @@ app.get("/admin.html", (req, res, next) => {
     ) {
         return res.redirect("/choose-role.html");
     }
-
-    next();
+    res.sendFile(path.join(__dirname, "admin", "admin.html"));
 });
 
 // Prevent public access to private pending submissions

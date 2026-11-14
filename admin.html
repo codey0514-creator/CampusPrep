@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusPrep | Admin Dashboard</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>CampusPrep</h1>
+        <nav>
+            <a href="/veiwer.html">Go to Viewer</a>
+            <a href="/auth/logout">Logout</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Admin Dashboard</h2>
+        <p>Review and manage submitted placement experiences.</p>
+
+        <div class="admin-toolbar">
+            <h3>Pending Submissions (<span id="pending-count">0</span>)</h3>
+            <button id="refreshPending">Refresh</button>
+        </div>
+
+        <p id="admin-message"></p>
+        <div id="pending-posts"></div>
+    </main>
+
+    <script src="../script.js"></script>
+</body>
+</html>
