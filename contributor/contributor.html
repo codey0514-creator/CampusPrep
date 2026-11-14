@@ -15,6 +15,7 @@
             <a href="/auth/logout">Logout</a>
         </div>
     </header>
+
     <main class="contributor-container">
         <section class="intro">
             <h2>Share Your Placement Experience</h2>
@@ -22,6 +23,16 @@
         </section>
 
         <form id="contribution-form">
+            <div class="form-group">
+                <label for="authorName">Your Name</label>
+                <input type="text" id="authorName" placeholder="Enter your name" maxlength="100" required>
+            </div>
+
+            <label class="anonymous-option">
+                <input type="checkbox" id="anonymous">
+                Submit anonymously
+            </label>
+
             <div class="form-group">
                 <label for="company">Company Name</label>
                 <input type="text" id="company" placeholder="e.g. Google" required maxlength="100">
@@ -62,11 +73,6 @@
                 <label for="tips">Preparation Tips</label>
                 <textarea id="tips" rows="4" placeholder="Share useful preparation advice..."></textarea>
             </div>
-
-            <label class="anonymous-option">
-                <input type="checkbox" id="anonymous">
-                Submit anonymously
-            </label>
 
             <p class="review-note">
                 Your submission will be reviewed by an admin before it becomes visible to other students.
