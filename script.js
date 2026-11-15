@@ -1,3 +1,4 @@
+
 let allPosts = [];
 let activeFilter = "all";
 

@@ -1,3 +1,26 @@
+:root {
+    --bg: #0b0f1a;
+    --surface: #131a2b;
+    --surface-hover: #1b2438;
+    --border: #263250;
+
+    --text: #e6e9f2;
+    --text-muted: #94a0b8;
+
+    --accent: #6366f1;
+    --accent-hover: #818cf8;
+    --accent-text: #a5b4fc;
+    --accent-soft: rgba(99, 102, 241, 0.15);
+
+    --oa: #22d3ee;
+    --oa-bg: rgba(34, 211, 238, 0.15);
+
+    --interview: #fbbf24;
+    --interview-bg: rgba(251, 191, 36, 0.15);
+
+    --success: #22c55e;
+    --danger: #ef4444;
+}
 * {
     box-sizing: border-box;
     margin: 0;
@@ -292,4 +315,462 @@ main p {
     font-size: 13px;
     font-weight: 500;
     text-align: right;
+}
+
+/* ================= VIEWER PAGE REDESIGN ================= */
+
+body:has(.viewer-search) main {
+    max-width: 1450px;
+    margin: 40px auto;
+}
+
+/* Search bar */
+
+.viewer-search {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+#companySearch {
+    flex: 1;
+    width: auto;
+    margin: 0;
+    padding: 16px 22px;
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    font-size: 18px;
+}
+
+#searchButton {
+    margin: 0;
+    padding: 12px 30px;
+    border-radius: 12px;
+    font-size: 16px;
+    background-color: #161b22;
+    border-color: #484f58;
+}
+
+/* Filters and experience count */
+
+.viewer-filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+    gap: 16px;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.filter-button {
+    margin: 0;
+    padding: 9px 24px;
+    border-radius: 30px;
+    background-color: transparent;
+    font-size: 16px;
+}
+
+.filter-button.active {
+    background-color: #09264a;
+    border-color: #1558a6;
+    color: #79b8ff;
+}
+
+.experience-count {
+    color: #8b949e;
+    font-size: 16px;
+}
+
+/* Experience cards grid */
+
+#experiences,
+.experiences-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 0;
+}
+
+/* Individual card */
+
+.experience-card {
+    background-color: #1c1c1c;
+    border: 1px solid #303030;
+    border-radius: 22px;
+    padding: 28px;
+    margin: 0;
+    min-width: 0;
+}
+
+.experience-card h3 {
+    color: #e6edf3;
+    font-size: 22px;
+    margin: 0;
+}
+
+.experience-card p {
+    color: #c9d1d9;
+}
+
+/* Card heading */
+
+.experience-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.company-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+}
+
+.company-icon {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background-color: #09264a;
+    color: #79b8ff;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.company-details {
+    min-width: 0;
+}
+
+.company-role {
+    color: #c9d1d9;
+    font-size: 16px;
+}
+
+/* OA and Interview badges */
+
+.experience-type {
+    padding: 5px 18px;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.experience-type.oa {
+    background-color: #0b2a13;
+    color: #3fb950;
+}
+
+.experience-type.interview {
+    background-color: #3b1012;
+    color: #ff7b72;
+}
+
+/* Year and branch */
+
+.experience-tags {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.experience-tags span {
+    padding: 4px 14px;
+    border-radius: 9px;
+    background-color: #161616;
+    color: #c9d1d9;
+    font-size: 15px;
+}
+
+/* Experience preview */
+
+.experience-preview {
+    margin-top: 18px;
+    color: #c9d1d9;
+    font-size: 17px;
+    line-height: 1.7;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 14px;
+    color: #79b8ff;
+    font-size: 16px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Bottom row */
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid #303030;
+    margin-top: 20px;
+    padding-top: 16px;
+    color: #8b949e;
+    font-size: 15px;
+}
+
+.contributor-name,
+.question-count {
+    color: #8b949e;
+    font-size: 15px;
+}
+
+/* Mobile layout */
+
+@media (max-width: 750px) {
+    #experiences,
+    .experiences-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .viewer-filters {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 500px) {
+    .viewer-search {
+        flex-direction: column;
+    }
+
+    #searchButton {
+        width: 100%;
+    }
+
+    .experience-card {
+        padding: 18px;
+    }
+
+    .experience-top {
+        flex-wrap: wrap;
+    }
+
+    .company-icon {
+        width: 52px;
+        height: 52px;
+    }
+}
+/* ================= CAMPUSPREP COLOR THEME ================= */
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+header {
+    background-color: var(--surface);
+    border-color: var(--border);
+}
+
+header h1,
+main h2,
+.experience-card h3,
+.card-section h4 {
+    color: var(--text);
+}
+
+main p,
+nav a,
+.experience-card p {
+    color: var(--text-muted);
+}
+
+/* Search */
+
+#companySearch {
+    background-color: var(--surface);
+    color: var(--text);
+    border-color: var(--border);
+}
+
+#companySearch:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+#companySearch::placeholder {
+    color: var(--text-muted);
+}
+
+#searchButton {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+#searchButton:hover {
+    background-color: var(--accent-hover);
+    border-color: var(--accent-hover);
+}
+
+/* Filters */
+
+.filter-button {
+    background-color: transparent;
+    border-color: var(--border);
+    color: var(--text-muted);
+}
+
+.filter-button:hover {
+    background-color: var(--surface-hover);
+}
+
+.filter-button.active {
+    background-color: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent-text);
+}
+
+/* Cards */
+
+.experience-card {
+    background-color: var(--surface);
+    border-color: var(--border);
+}
+
+.experience-card:hover {
+    background-color: var(--surface-hover);
+}
+
+.experience-card h3 {
+    color: var(--accent-text);
+}
+
+.company-icon {
+    background-color: var(--accent-soft);
+    color: var(--accent-text);
+}
+
+.company-role {
+    color: var(--text-muted);
+}
+
+/* OA and Interview badges */
+
+.experience-type.oa {
+    background-color: var(--oa-bg);
+    color: var(--oa);
+}
+
+.experience-type.interview {
+    background-color: var(--interview-bg);
+    color: var(--interview);
+}
+
+/* Year and branch */
+
+.experience-tags span {
+    background-color: var(--bg);
+    color: var(--text-muted);
+}
+
+/* Experience content */
+
+.experience-preview {
+    color: var(--text);
+}
+
+.read-more,
+.experience-card a {
+    color: var(--accent-text);
+}
+
+.read-more:hover,
+.experience-card a:hover {
+    color: var(--accent-hover);
+}
+
+/* Card footer */
+
+.card-footer {
+    border-color: var(--border);
+    color: var(--text-muted);
+}
+
+.contributor-name,
+.question-count {
+    color: var(--text-muted);
+}
+
+/* Login page */
+
+.login-container {
+    background-color: var(--surface);
+    border-color: var(--border);
+}
+
+.login-container h1 {
+    color: var(--text);
+}
+
+.login-container p {
+    color: var(--text-muted);
+}
+
+.google-btn {
+    background-color: var(--accent);
+    border-color: var(--accent);
+}
+
+.google-btn:hover {
+    background-color: var(--accent-hover);
+}
+
+/* Admin buttons */
+
+#refreshPending {
+    background-color: var(--surface-hover);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+.approve-button {
+    background-color: var(--success);
+    border-color: var(--success);
+}
+
+.reject-button {
+    background-color: var(--danger);
+    border-color: var(--danger);
+}
+
+.admin-success {
+    color: var(--success);
+}
+
+.admin-error {
+    color: var(--danger);
+}
+/* Card hover effect */
+
+.experience-card {
+    background-color: #131a2b;
+    border: 1px solid #263250;
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.experience-card:hover {
+    background-color: #211f2b;
+    border-color: #9a6338;
 }

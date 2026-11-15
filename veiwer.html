@@ -3,34 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CampusPrep - Viewer</title>
+    <title>CampusPrep - Placement Experiences</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <header>
         <h1>CampusPrep</h1>
     </header>
+
     <main>
-        <section>
-            <h2>Placement Experiences</h2>
-            <p>Search and explore experiences shared by students.</p>
-        </section>
-        <section>
-            <input 
-                type="text" 
+        <section class="viewer-search">
+            <input
+                type="text"
                 id="companySearch"
                 placeholder="Search company..."
             >
             <button id="searchButton">Search</button>
         </section>
-        <section>
-            <button class="filter-button" data-filter="all">All</button>
-            <button class="filter-button" data-filter="oa">OA</button>
-            <button class="filter-button" data-filter="interview">Interview</button>
+
+        <section class="viewer-filters">
+            <div class="filter-buttons">
+                <button class="filter-button active" data-filter="all">
+                    All
+                </button>
+
+                <button class="filter-button" data-filter="oa">
+                    OA
+                </button>
+
+                <button class="filter-button" data-filter="interview">
+                    Interview
+                </button>
+            </div>
+
+            <div class="experience-count" id="experience-count">
+                Placement Experiences
+            </div>
         </section>
-        <section id="experiences">
+
+        <section id="experiences" class="experiences-grid">
+            <p>Loading experiences...</p>
         </section>
     </main>
+
     <script src="script.js"></script>
+
 </body>
 </html>

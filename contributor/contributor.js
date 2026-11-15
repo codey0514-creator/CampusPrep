@@ -1,3 +1,4 @@
+
 const form = document.getElementById("contribution-form");
 const message = document.getElementById("form-message");
 const submitButton = document.getElementById("submit-button");
