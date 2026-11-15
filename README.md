@@ -5,6 +5,8 @@ Students can read interview and online assessment (OA) experiences shared by the
 peers, search by company, and submit their own. Every submission is reviewed by
 an admin before it goes live.
 
+Git hub Link - https://github.com/codey0514-creator/CampusPrep
+
 ## Features
 
 **Students**
