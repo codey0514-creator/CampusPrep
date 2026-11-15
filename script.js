@@ -35,7 +35,6 @@ function getQuestions(questions) {
     return [];
 }
 
-// ---------------- VIEWER PAGE ----------------
 
 async function loadPosts() {
     try {

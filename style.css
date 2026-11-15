@@ -100,7 +100,6 @@ main p {
     cursor: pointer;
 }
 
-/* Selected filter button */
 .filter-button.active {
     background-color: #8957e5;
     border-color: #8957e5;
@@ -111,7 +110,6 @@ main p {
     margin-top: 32px;
 }
 
-/* Experience card */
 .experience-card {
     background-color: #161b22;
     border: 1px solid #30363d;
@@ -136,7 +134,6 @@ main p {
     text-decoration: none;
 }
 
-/* Second line of the card: type on the left, year/branch on the right */
 .card-meta {
     display: flex;
     justify-content: space-between;
@@ -152,7 +149,6 @@ main p {
     font-size: 14px;
 }
 
-/* Questions / Experience / Tips blocks */
 .card-section {
     margin-top: 14px;
 }
@@ -170,10 +166,9 @@ main p {
 }
 .card-section p {
     margin: 0;
-    white-space: pre-wrap;   /* keeps line breaks from the submitted text */
+    white-space: pre-wrap;  
 }
 
-/* Login page */
 .login-body {
     min-height: 100vh;
     display: flex;
@@ -215,7 +210,6 @@ main p {
     margin-bottom: 0;
 }
 
-/* Admin dashboard */
 
 .admin-toolbar {
     display: flex;
@@ -317,14 +311,12 @@ main p {
     text-align: right;
 }
 
-/* ================= VIEWER PAGE REDESIGN ================= */
 
 body:has(.viewer-search) main {
     max-width: 1450px;
     margin: 40px auto;
 }
 
-/* Search bar */
 
 .viewer-search {
     display: flex;
@@ -352,7 +344,6 @@ body:has(.viewer-search) main {
     border-color: #484f58;
 }
 
-/* Filters and experience count */
 
 .viewer-filters {
     display: flex;
@@ -386,7 +377,6 @@ body:has(.viewer-search) main {
     font-size: 16px;
 }
 
-/* Experience cards grid */
 
 #experiences,
 .experiences-grid {
@@ -396,7 +386,6 @@ body:has(.viewer-search) main {
     margin-top: 0;
 }
 
-/* Individual card */
 
 .experience-card {
     background-color: #1c1c1c;
@@ -417,7 +406,6 @@ body:has(.viewer-search) main {
     color: #c9d1d9;
 }
 
-/* Card heading */
 
 .experience-top {
     display: flex;
@@ -456,7 +444,6 @@ body:has(.viewer-search) main {
     font-size: 16px;
 }
 
-/* OA and Interview badges */
 
 .experience-type {
     padding: 5px 18px;
@@ -476,7 +463,6 @@ body:has(.viewer-search) main {
     color: #ff7b72;
 }
 
-/* Year and branch */
 
 .experience-tags {
     display: flex;
@@ -492,7 +478,6 @@ body:has(.viewer-search) main {
     font-size: 15px;
 }
 
-/* Experience preview */
 
 .experience-preview {
     margin-top: 18px;
@@ -515,7 +500,6 @@ body:has(.viewer-search) main {
     cursor: pointer;
 }
 
-/* Bottom row */
 
 .card-footer {
     display: flex;
@@ -535,7 +519,6 @@ body:has(.viewer-search) main {
     font-size: 15px;
 }
 
-/* Mobile layout */
 
 @media (max-width: 750px) {
     #experiences,
@@ -571,7 +554,6 @@ body:has(.viewer-search) main {
         height: 52px;
     }
 }
-/* ================= CAMPUSPREP COLOR THEME ================= */
 
 body {
     background-color: var(--bg);
@@ -596,7 +578,6 @@ nav a,
     color: var(--text-muted);
 }
 
-/* Search */
 
 #companySearch {
     background-color: var(--surface);
@@ -624,7 +605,6 @@ nav a,
     border-color: var(--accent-hover);
 }
 
-/* Filters */
 
 .filter-button {
     background-color: transparent;
@@ -642,7 +622,6 @@ nav a,
     color: var(--accent-text);
 }
 
-/* Cards */
 
 .experience-card {
     background-color: var(--surface);
@@ -666,7 +645,6 @@ nav a,
     color: var(--text-muted);
 }
 
-/* OA and Interview badges */
 
 .experience-type.oa {
     background-color: var(--oa-bg);
@@ -678,14 +656,12 @@ nav a,
     color: var(--interview);
 }
 
-/* Year and branch */
 
 .experience-tags span {
     background-color: var(--bg);
     color: var(--text-muted);
 }
 
-/* Experience content */
 
 .experience-preview {
     color: var(--text);
@@ -701,7 +677,6 @@ nav a,
     color: var(--accent-hover);
 }
 
-/* Card footer */
 
 .card-footer {
     border-color: var(--border);
@@ -713,7 +688,6 @@ nav a,
     color: var(--text-muted);
 }
 
-/* Login page */
 
 .login-container {
     background-color: var(--surface);
@@ -737,7 +711,6 @@ nav a,
     background-color: var(--accent-hover);
 }
 
-/* Admin buttons */
 
 #refreshPending {
     background-color: var(--surface-hover);
@@ -762,7 +735,6 @@ nav a,
 .admin-error {
     color: var(--danger);
 }
-/* Card hover effect */
 
 .experience-card {
     background-color: #131a2b;
