@@ -78,22 +78,5 @@
         "tips": "Practice standard DP patterns and learn to identify overlapping subproblems.",
         "createdAt": "2026-11-05T10:00:00.000Z",
         "status": "approved"
-    },
-    {
-        "id": "af4748dc-7bdd-460f-8c65-d79232ea3ada",
-        "company": "MAMMYPOKOPANTS",
-        "type": "oa",
-        "year": 2030,
-        "branch": "cse",
-        "questions": "k",
-        "experience": "y",
-        "tips": "s",
-        "isAnonymous": true,
-        "authorName": "",
-        "authorEmail": "ratishanand@iitbhilai.ac.in",
-        "status": "approved",
-        "createdAt": "2026-11-14T20:18:46.596Z",
-        "approvedAt": "2026-11-14T20:21:03.656Z",
-        "approvedBy": "ratishanand@iitbhilai.ac.in"
     }
 ]
